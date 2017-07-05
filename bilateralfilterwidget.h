@@ -36,6 +36,7 @@ private:
   QOpenGLVertexArrayObject vao;
   QOpenGLTexture *texture;
   QOpenGLBuffer indexBuf;
+  QSize viewport;
 };
 
 #endif // BILATERALFILTERWIDGET_H
