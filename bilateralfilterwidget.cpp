@@ -82,9 +82,7 @@ void BilateralFilterWidget::initializeGL(){
   indexBuf.allocate(indices.data(), indices.length() * sizeof(ushort));
   indexBuf.release();
 
-#ifdef QT_DEBUG
   emit glInited();
-#endif // QT_DEBUG
 }
 
 void BilateralFilterWidget::resizeGL(int w, int h){
