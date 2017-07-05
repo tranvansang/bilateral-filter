@@ -88,6 +88,8 @@ void BilateralFilterWidget::initializeGL(){
 void BilateralFilterWidget::resizeGL(int w, int h){
   program.bind();
   glViewport(0, 0, w, h);
+  viewport.setHeight(h);
+  viewport.setWidth(w);
 
   //setup mvp
   QMatrix4x4 projection;
@@ -143,5 +145,18 @@ void BilateralFilterWidget::setImage(QImage const& img){
   texture->setMagnificationFilter(QOpenGLTexture::Linear);
 
   texture->setWrapMode(QOpenGLTexture::Repeat);
+
+  program.bind();
+  //setup mvp
+  QMatrix4x4 projection;
+  projection.setToIdentity();
+  float a = img.height() * viewport.width();
+  float b = img.width() * viewport.height();
+  float c = qMax(a, b);
+  projection.scale(b / c, a / c, 1);
+  program.setUniformValue("mvp_matrix", projection);
+
+  program.release();
+
   doneCurrent();
 }
