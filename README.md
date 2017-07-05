@@ -7,7 +7,7 @@ See [fshader.frag](https://github.com/tranvansang/bilateral-filter/blob/master/f
 ## Usage
 
 - Install [Qt Creator](https://www.qt.io/ide/) (free)
-- Open BilatteralFiltering.pro
+- Open `BilatteralFiltering.pro`
 - Hit run
 
 ## Note:
