@@ -17,7 +17,7 @@ See [fshader.frag](https://github.com/tranvansang/bilateral-filter/blob/master/f
 - Currently, cannot compile in Ubuntu because of OpenGL driver problem
 - Execute `BilatteralFiltering.exe` directly in Window to run program without compiling (non tested)
 
-Screenshots:
+## Screenshots:
 
 ![alt text](https://raw.githubusercontent.com/tranvansang/bilateral-filter/master/screenshots/sc1.png)
 
