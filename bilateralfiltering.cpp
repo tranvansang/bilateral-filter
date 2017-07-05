@@ -5,8 +5,8 @@
 BilateralFiltering::BilateralFiltering(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::BilateralFiltering),
-  maxColorParam(10.f),
-  maxLocationParam(10.f)
+  maxColorParam(5.f),
+  maxLocationParam(20.f)
 {
   ui->setupUi(this);
   ui->saveButton->setDisabled(true);
@@ -43,7 +43,7 @@ void BilateralFiltering::loadImage(QString filePath){
           ui->saveButton->setDisabled(false);
           QSize topleft = (ui->bilateralFilterWidget->size() - scaledImage.size()) / 2;
           imageRect = QRect(topleft.width(), topleft.height(), scaledImage.width(), scaledImage.height());
-          ui->bilateralFilterWidget->setImage(scaledImage);
+          ui->bilateralFilterWidget->setImage(image);
           ui->bilateralFilterWidget->update();
         }else{
           qWarning() << "Cannot load image";
@@ -59,7 +59,7 @@ float BilateralFiltering::colorParam(){
 }
 
 float BilateralFiltering::locationParam(){
-  return  maxColorParam * ui->locationParamSlider->value() / ui->locationParamSlider->maximum();
+  return  maxLocationParam * ui->locationParamSlider->value() / ui->locationParamSlider->maximum();
 }
 
 void BilateralFiltering::on_colorParamSlider_valueChanged(int value)
