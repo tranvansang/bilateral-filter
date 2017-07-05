@@ -100,18 +100,18 @@ void BilateralFilterWidget::resizeGL(int w, int h){
   program.release();
 }
 
-void BilateralFilterWidget::setColorParam(float sigmaS){
+void BilateralFilterWidget::setColorParam(float sigmaL){
   if (!isValid()) return;
   if (!program.bind()) close();
-  program.setUniformValue("sigmaS", sigmaS);
+  program.setUniformValue("sigmaL", sigmaL);
   program.release();
   update();
 }
 
-void BilateralFilterWidget::setLocationParam(float sigmaL){
+void BilateralFilterWidget::setLocationParam(float sigmaS){
   if (!isValid()) return;
   if (!program.bind()) close();
-  program.setUniformValue("sigmaL", sigmaL);
+  program.setUniformValue("sigmaS", sigmaS);
   program.release();
   update();
 }
