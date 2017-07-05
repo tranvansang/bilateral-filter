@@ -22,10 +22,8 @@ public:
   ~BilateralFilterWidget();
   void setImage(QImage const&);
 
-#ifdef QT_DEBUG
 signals:
   void glInited();
-#endif //QT_DEBUG
 
 protected:
   void initializeGL() Q_DECL_OVERRIDE;
