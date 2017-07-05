@@ -9,14 +9,12 @@ BilateralFiltering::BilateralFiltering(QWidget *parent) :
   maxLocationParam(10.f)
 {
   ui->setupUi(this);
-  on_colorParamSlider_valueChanged(ui->colorParamSlider->value());
-  on_locationParamSlider_valueChanged(ui->locationParamSlider->value());
   ui->saveButton->setDisabled(true);
-#ifdef QT_DEBUG
   connect(ui->bilateralFilterWidget, &BilateralFilterWidget::glInited, [=](){
+      on_colorParamSlider_valueChanged(ui->colorParamSlider->value());
+      on_locationParamSlider_valueChanged(ui->locationParamSlider->value());
       loadImage(":/face_display.png");
     });
-#endif // QT_DEBUG
 }
 
 BilateralFiltering::~BilateralFiltering()
