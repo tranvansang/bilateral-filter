@@ -11,9 +11,8 @@ BilateralFiltering::BilateralFiltering(QWidget *parent) :
   ui->setupUi(this);
   ui->saveButton->setDisabled(true);
   connect(ui->bilateralFilterWidget, &BilateralFilterWidget::glInited, [=](){
-      on_colorParamSlider_valueChanged(ui->colorParamSlider->value());
-      on_locationParamSlider_valueChanged(ui->locationParamSlider->value());
       loadImage(":/face_display.png");
+      updateParam();
     });
 }
 
@@ -54,24 +53,14 @@ void BilateralFiltering::loadImage(QString filePath){
     }
 }
 
-float BilateralFiltering::colorParam(){
-  return  maxColorParam * ui->colorParamSlider->value() / ui->colorParamSlider->maximum();
-}
-
-float BilateralFiltering::locationParam(){
-  return  maxLocationParam * ui->locationParamSlider->value() / ui->locationParamSlider->maximum();
-}
-
 void BilateralFiltering::on_colorParamSlider_valueChanged(int value)
 {
-  ui->colorParamLabel->setText(tr("").sprintf("%.1f", colorParam()));
-  ui->bilateralFilterWidget->setColorParam(colorParam());
+  updateParam();
 }
 
 void BilateralFiltering::on_locationParamSlider_valueChanged(int value)
 {
-  ui->locationParamLabel->setText(tr("").sprintf("%.1f", locationParam()));
-  ui->bilateralFilterWidget->setLocationParam(locationParam());
+  updateParam();
 }
 
 void BilateralFiltering::on_saveButton_clicked()
@@ -84,4 +73,14 @@ void BilateralFiltering::on_saveButton_clicked()
       QPixmap image = QPixmap::grabWidget(ui->bilateralFilterWidget, imageRect);
       image.save(filePath, "JPG");
     }
+}
+
+void BilateralFiltering::updateParam(){
+  float colorParam =  maxColorParam * ui->colorParamSlider->value() / ui->colorParamSlider->maximum();
+  float locationParam =  maxLocationParam * ui->locationParamSlider->value() / ui->locationParamSlider->maximum();
+  ui->colorParamLabel->setText(tr("").sprintf("%.1f", colorParam));
+  ui->locationParamLabel->setText(tr("").sprintf("%.1f", locationParam));
+  ui->bilateralFilterWidget->setColorParam(colorParam);
+  ui->bilateralFilterWidget->setLocationParam(locationParam);
+  ui->bilateralFilterWidget->update();
 }

@@ -3,14 +3,14 @@
 
 #include <QObject>
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions>
+#include <QOpenGLFunctions_4_5_Core>
 #include <QImage>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLTexture>
 
-class BilateralFilterWidget : public QOpenGLWidget, protected QOpenGLFunctions
+class BilateralFilterWidget : public QOpenGLWidget, protected QOpenGLFunctions_4_5_Core
 {
   Q_OBJECT
 

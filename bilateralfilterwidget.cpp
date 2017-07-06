@@ -27,6 +27,7 @@ void BilateralFilterWidget::initializeGL(){
   //background
   glClearColor(0, 0, 0, 1);
 
+  glBindFragDataLocation(program.programId(), 0, "FragColor");
   //init program
   if (!program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.vert")){
       qCritical() << program.log();
@@ -56,7 +57,6 @@ void BilateralFilterWidget::initializeGL(){
                              {QVector2D(1.f, -1.f), QVector2D(1.f, 0.f)}
                            });
   buffer.allocate(rect.data(), rect.length() * sizeof(VertexData));
-  //buffer.allocate()
 
   //vao
   if (!vao.create()) close();
@@ -101,30 +101,29 @@ void BilateralFilterWidget::resizeGL(int w, int h){
 }
 
 void BilateralFilterWidget::setColorParam(float sigmaL){
-  if (!isValid()) return;
+  makeCurrent();
   if (!program.bind()) close();
   program.setUniformValue("sigmaL", sigmaL);
   program.release();
-  update();
+  doneCurrent();
 }
 
 void BilateralFilterWidget::setLocationParam(float sigmaS){
-  if (!isValid()) return;
+  makeCurrent();
   if (!program.bind()) close();
   program.setUniformValue("sigmaS", sigmaS);
   program.release();
-  update();
+  doneCurrent();
 }
 
 void BilateralFilterWidget::paintGL(){
   if (!program.bind()) close();
   if (texture != Q_NULLPTR) texture->bind();
   vao.bind();
-  program.setUniformValue("texture", 0);
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   indexBuf.bind();
-  glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_SHORT, 0);
+  glDrawElements(GL_TRIANGLE_STRIP, 5, GL_UNSIGNED_SHORT, 0);
   indexBuf.release();
 
   vao.release();

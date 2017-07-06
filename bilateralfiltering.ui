@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>595</width>
+    <width>591</width>
     <height>874</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>370</y>
+      <y>389</y>
       <width>560</width>
       <height>250</height>
      </rect>
@@ -29,9 +29,16 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>111</width>
-      <height>17</height>
+      <width>151</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Bilateral filter</string>
@@ -41,7 +48,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>722</y>
+      <y>741</y>
       <width>231</width>
       <height>16</height>
      </rect>
@@ -57,7 +64,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>752</y>
+      <y>771</y>
       <width>231</width>
       <height>16</height>
      </rect>
@@ -73,7 +80,7 @@
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>721</y>
+      <y>740</y>
       <width>134</width>
       <height>17</height>
      </rect>
@@ -86,7 +93,7 @@
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>751</y>
+      <y>770</y>
       <width>112</width>
       <height>17</height>
      </rect>
@@ -99,7 +106,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>720</y>
+      <y>739</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -112,7 +119,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>750</y>
+      <y>769</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -121,24 +128,11 @@
      <string>5</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="loadImageButton">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>40</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load image</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="messageLabel">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>790</y>
+      <y>809</y>
       <width>591</width>
       <height>17</height>
      </rect>
@@ -151,10 +145,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>99</y>
       <width>560</width>
       <height>250</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="minimumSize">
      <size>
@@ -169,24 +169,11 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>111</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Original image</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="saveButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>680</y>
+      <y>699</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -195,13 +182,52 @@
      <string>Save</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>359</y>
+      <width>171</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtered image</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>195</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Original image</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="loadImageButton">
+       <property name="text">
+        <string>Load image</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>595</width>
+     <width>591</width>
      <height>22</height>
     </rect>
    </property>

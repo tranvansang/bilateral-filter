@@ -1,14 +1,14 @@
-#version 410
+#version 450
 uniform sampler2D texture;
-varying vec2 v_texcoord;
+in vec2 v_texcoord;
 
 uniform float sigmaS;
 uniform float sigmaL;
 
-#define F 0.619928135
 #define EPS 1e-5
 
 vec4 filtering;
+out vec4 FragColor;
 
 float lum(in vec4 color) {
     return length(color.xyz);
@@ -24,10 +24,10 @@ void main()
 
   float sumW = 0.;
   vec4  sumC = vec4(0.);
-  float halfSize = sigS / F;
+  float halfSize = sigS * 2;
   ivec2 textureSize2 = textureSize(texture, 0);
 
-  float l = lum(texture(texture,v_texcoord));
+  float l = lum(texture2D(texture,v_texcoord));
 
   for (float i = -halfSize; i <= halfSize; i++){
     for (float j = -halfSize; j <= halfSize; j++){
@@ -47,5 +47,5 @@ void main()
   }
 
   filtering = sumC/sumW;
-  gl_FragColor = filtering;
+  FragColor = filtering;
 }

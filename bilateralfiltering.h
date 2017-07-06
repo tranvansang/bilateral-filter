@@ -29,10 +29,9 @@ private:
     Ui::BilateralFiltering *ui;
     float maxColorParam;
     float maxLocationParam;
-    float colorParam();
-    float locationParam();
     QRect imageRect;
     void loadImage(QString);
+    void updateParam();
 };
 
 #endif // BILATERALFILTERING_H
