@@ -7,7 +7,6 @@ uniform float sigmaL;
 
 #define EPS 1e-5
 
-vec4 filtering;
 out vec4 FragColor;
 
 float lum(in vec4 color) {
@@ -29,8 +28,8 @@ void main()
 
   float l = lum(texture2D(texture,v_texcoord));
 
-  for (float i = -halfSize; i <= halfSize; i++){
-    for (float j = -halfSize; j <= halfSize; j++){
+  for (float i = -halfSize; i <= halfSize; i ++){
+    for (float j = -halfSize; j <= halfSize; j ++){
       vec2 pos = vec2(i, j);
       vec4 offsetColor = texture2D(texture, v_texcoord + pos / textureSize2);
 
@@ -46,6 +45,5 @@ void main()
     }
   }
 
-  filtering = sumC/sumW;
-  FragColor = filtering;
+  FragColor = sumC/sumW;
 }

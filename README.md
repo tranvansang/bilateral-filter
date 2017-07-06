@@ -12,9 +12,8 @@ See [fshader.frag](https://github.com/tranvansang/bilateral-filter/blob/master/f
 
 ## Note:
 - This project is created using Qt 5.9.1
-- This project requires GLSL compiler ver 4.10
-- Tested in window 7
-- Currently, cannot compile in Ubuntu because of OpenGL driver problem
+- This project requires GLSL compiler ver 4.50
+- Tested in Ubuntu
 - Execute `BilatteralFiltering.exe` directly in Window to run program without compiling (non tested)
 
 ## Screenshots:
